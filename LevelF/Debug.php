@@ -14,7 +14,7 @@ class Debug
     /** Cette fonction retourne le deuxième élèment de la liste */
     public function myList()
     {
-        list($a, $a) = array(1, 2, 3, 4);
+        list($b, $a) = array(1, 2, 3, 4);
 
         return array(
                 'return' => $a,
@@ -35,10 +35,11 @@ class Debug
         $array2 = array(
             'bar' => 'bar',
             'foo' => 'foo',
+            'token' => $this->token,
         );
 
         return array(
-            'return' => $array1 === $array2,
+            'return' => $array1 == $array2,
             'cheat' => $array1['token'],
         );
     }
