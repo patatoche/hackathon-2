@@ -21,25 +21,23 @@ class Brute
      */
     public function force()
     {
+        $methods = array('md5', 'crc32', 'base64_encode', 'sha1');
+
         $this->origin = "Not found :'(";
 
-//        for ($chr1 = 'a'; $chr1 <= 'z'; $chr1++) {
-//            for ($chr2 = 'a'; $chr2 <= 'z'; $chr2++) {
-//                for ($chr3 = 'a'; $chr3 <= 'z'; $chr3++) {
-//                    for ($chr4 = 'a'; $chr4 <= 'z'; $chr4++) {
-//                        $pwd = $chr1.$chr2.$chr3.$chr4;
-//
-//                        if (call_user_func('md5', $pwd) === $this->hash) {
-//
-//                            $this->origin = $pwd;
-//
-//                            break(4);
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        foreach ($methods as $method) {
+
+            $pwd = 'aaaa';
+            while ($pwd < 'zzzz') {
+                if ($method($pwd) === $this->hash) {
+                    $this->origin = $pwd;
+                    break;
+                }
+                $pwd++;
+            }
+        }
 
         return $this->origin;
     }
+
 }
